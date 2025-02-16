@@ -12,26 +12,19 @@ The code performs the following tasks:
 
 ## Installation
 
-Clone the repository and install the required dependencies. For example:
+Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
-pip install -r requirements.txt
+git clone https://github.com/rezash121/PEFT-Fine-Tuning-Integration-Demo.git
+cd rezash121/PEFT-Fine-Tuning-Integration-Demo
 ```
-
-Make sure that your `requirements.txt` includes:
-- `transformers`
-- `peft`
-- `torch`
-- (and any other dependencies required by your project)
 
 ## Usage
 
 1. **Prepare the Adapter Checkpoint:**  
    Ensure you have downloaded your adapter checkpoint directory to your Colab environment. For instance, if you upload it to Colab, the path might be:
    ```
-   /content/peft-dialogue-summary-training/final-checkpoint/checkpoint-1000
+   /content/peft-dialogue-summary-training/final-checkpoint/checkpoint-500
    ```
 
 2. **Configure the Code:**  
@@ -50,7 +43,7 @@ Make sure that your `requirements.txt` includes:
        base_model_id,
        device_map="auto",
        trust_remote_code=True,
-       use_auth_token=True  # Use only if needed (e.g., for private models)
+       use_auth_token=True  
    )
 
    # Load the tokenizer
@@ -63,7 +56,7 @@ Make sure that your `requirements.txt` includes:
    eval_tokenizer.pad_token = eval_tokenizer.eos_token
 
    # Specify the local adapter checkpoint path
-   adapter_checkpoint_dir = "/content/peft-dialogue-summary-training/final-checkpoint/checkpoint-1000"
+   adapter_checkpoint_dir = "/content/peft-dialogue-summary-training/final-checkpoint/checkpoint-500"
 
    # Load the fine-tuned PEFT adapter into the base model
    ft_model = PeftModel.from_pretrained(
